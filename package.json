@@ -1,0 +1,28 @@
+{
+  "name": "pixelpro-os",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PixelPro OS, sistema geral da PixelPro Performance",
+  "type": "commonjs",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "seed": "node prisma/seed.js",
+    "setup": "prisma db push && node prisma/seed.js",
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}
