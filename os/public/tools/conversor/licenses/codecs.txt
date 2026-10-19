@@ -1,0 +1,15 @@
+PixelPro image converter — codec sources and notices
+
+ImageMagick WASM 0.0.44
+Source: https://github.com/dlemstra/magick-wasm
+Dependencies and notices: ImageMagick-NOTICE.txt
+
+icodec HEIC encoder 0.9.3
+Wrapper source and build scripts: https://github.com/pbk20191/icodec
+Original project: https://github.com/Kaciras/icodec
+HEIC encoder includes libheif (LGPL) and x265 (GPL).
+libheif source: https://github.com/strukturag/libheif
+x265 source and license: https://bitbucket.org/multicoreware/x265_git/src/master/
+Build versions used by icodec are in its versions.json and source build scripts.
+
+zip.js: https://github.com/gildas-lormeau/zip.js — BSD-3-Clause

@@ -1,0 +1,3 @@
+import { access,canView,denied } from "../../../access";
+import { env } from "@/lib/runtime";
+export async function GET(_req:Request,{params}:{params:Promise<{key:string}>}){const a=await access();if(!a)return denied();const {key}=await params;const row=await env.DB!.prepare("SELECT brand_id AS brandId,object_key AS objectKey,mime FROM assets WHERE id=?").bind(key).first<{brandId:string;objectKey:string;mime:string}>();if(!row||!canView(a,row.brandId))return denied("Imagem indisponível",404);const object=await env.BUCKET!.get(row.objectKey);if(!object)return denied("Imagem indisponível",404);return new Response(object.body,{headers:{"Content-Type":row.mime,"Cache-Control":"private, max-age=300","X-Content-Type-Options":"nosniff"}})}

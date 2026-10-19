@@ -1,0 +1,2 @@
+import {access,canView,denied} from '../../access';import {sqlite} from '@/lib/runtime';
+export async function GET(req:Request){const a=await access();if(!a)return denied();const brandId=new URL(req.url).searchParams.get('brandId')||'';if(!canView(a,brandId))return denied();const rows=sqlite().prepare('SELECT id,filename,mime,created_at AS createdAt FROM assets WHERE brand_id=? ORDER BY created_at DESC').all(brandId);return Response.json(rows.map(r=>({...r,url:`/api/assets/${r.id}`})),{headers:{'Cache-Control':'no-store'}})}

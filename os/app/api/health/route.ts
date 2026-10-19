@@ -1,0 +1,1 @@
+import {sqlite} from '@/lib/runtime';export async function GET(){try{sqlite().prepare('SELECT 1').get();return Response.json({ok:true,service:'pixelpro-os',release:'production-pro-1'})}catch{return Response.json({ok:false},{status:503})}}
